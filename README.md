@@ -1,4 +1,4 @@
-# cheztone-backend
+# cheztone-backend [![Build Status](https://travis-ci.org/ChezTone/cheztone-backend.svg?branch=master)](https://travis-ci.org/ChezTone/cheztone-backend)
 
 This project exposes a REST Api and store all data in a MongoDb repository.
 
