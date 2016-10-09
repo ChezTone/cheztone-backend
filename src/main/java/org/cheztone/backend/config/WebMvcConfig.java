@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-@EnableMongoRepositories(basePackages = "org.cheztone.backend.repository")
 @ComponentScan(basePackages = {"org.cheztone.backend"})
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 

@@ -7,11 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@EnableMongoRepositories(basePackages = "org.cheztone.backend.repository")
 @PropertySource({ "classpath:mongodb-data-source.properties" })
 public class DataSourceConfig extends AbstractMongoConfiguration {
 
@@ -20,14 +22,13 @@ public class DataSourceConfig extends AbstractMongoConfiguration {
 
     @Override
     public String getDatabaseName(){
-        return env.getRequiredProperty("mongo.name");
+        return env.getProperty("mongo.database.name");
     }
 
     @Override
     @Bean
     public Mongo mongo() throws Exception {
-
-        ServerAddress serverAddress = new ServerAddress(env.getRequiredProperty("mongo.host"));
+        ServerAddress serverAddress = new ServerAddress(env.getProperty("mongo.host"));
         List<MongoCredential> credentials = new ArrayList<>();
         /*credentials.add(MongoCredential.createScramSha1Credential(
                 env.getRequiredProperty("mongo.username"),
